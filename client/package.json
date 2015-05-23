@@ -1,0 +1,11 @@
+{
+  "name": "client",
+  "version": "0.0.0",
+  "description": "chatroom client",
+  "main": "index.html",
+  "scripts": {
+    "start": "chrome ./build/index.html"
+  },
+  "author": "liyuan",
+  "license": "MIT"
+}
