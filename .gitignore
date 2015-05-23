@@ -27,7 +27,10 @@ build/Release
 node_modules
 
 # project custom ignore
+vendor
 *.suo
+*.user
 /chatsvr/
+/chatclient/
 obj
 .ntvs_analysis.dat
