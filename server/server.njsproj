@@ -39,7 +39,6 @@
     <Compile Include="api\users.js" />
     <Compile Include="bin\www" />
     <Content Include="package.json" />
-    <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\" />
