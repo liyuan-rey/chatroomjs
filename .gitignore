@@ -27,6 +27,7 @@ build/Release
 node_modules
 
 # project custom ignore
+build
 vendor
 *.suo
 *.user
