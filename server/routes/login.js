@@ -9,26 +9,25 @@ router.get('/', function (req, res) {
     req.username = 'admin';
     req.password = '123456';
 
-    if (!checkUser(req.username, req.password)){
+    if (!checkPassword(req.username, req.password)){
         res.status(403).send('Access Denied.');
         return;
     }
     
     if (!checkRepeatLogin(req.username)) {
         res.status(400).send('User has already logged in.');
+        return;
     }
     
     var user = findUser(req.username);
     
-    if (user != null) {
-        user.lastActivedTime =  new Date();
-    } else {
+    if (user == null) {
         res.status(400).send('User has not registed.');
+        return;
     }
 
-    //var user = new User(req.username, req.password);
-    //user.lastActivedTime = Date.now();
-    
+    user.lastActivedTime =  new Date();
+
     if (datactx.onlineUsers.add(user))
         res.json({ user_token: user.id });
     else
@@ -37,7 +36,7 @@ router.get('/', function (req, res) {
 
 module.exports = router;
 
-function checkUser(username, password) {
+function checkPassword(username, password) {
     return true;
 }
 
