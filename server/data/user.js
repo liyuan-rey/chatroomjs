@@ -1,4 +1,4 @@
-﻿// user.js
+// user.js
 
 var uuid = require('node-uuid');
 

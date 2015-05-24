@@ -1,4 +1,4 @@
-﻿// datacontext.js
+// datacontext.js
 
 var DataSet = require('./dataset');
 var User = require('./user');
