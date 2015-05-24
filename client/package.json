@@ -1,14 +1,14 @@
 {
-  "name": "client",
+  "name": "chatroom client",
   "version": "0.0.0",
-  "description": "chatroom client",
-  "main": "index.html",
+  "private": true,
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/liyuan-rey/chatroomjs/blob/master/LICENSE"
+  },
   "scripts": {
     "start": "chrome ./build/index.html"
   },
-  "author": "liyuan",
-  "license": "MIT",
   "devDependencies": {
-    "grunt": "~0.4.0"
   }
 }
