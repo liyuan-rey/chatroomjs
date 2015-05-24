@@ -1,6 +1,7 @@
 {
-  "name": "chatroom client",
+  "name": "chatroom-client",
   "version": "0.0.0",
+  "description": "chatroom client",
   "private": true,
   "license": {
     "type": "MIT",
@@ -10,5 +11,6 @@
     "start": "chrome ./build/index.html"
   },
   "devDependencies": {
+    "gulp": "^3.8.11"
   }
 }
