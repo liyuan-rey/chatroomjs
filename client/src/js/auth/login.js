@@ -1,7 +1,7 @@
 // login.js
 
 define([
-	'require',
+	'requirejs',
 	'jquery'
 ], function(require, $) {
 	'use strict';

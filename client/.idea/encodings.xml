@@ -3,8 +3,11 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/.bowerrc" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bower.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gulpfile.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/package.json" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/app.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/auth/login.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/config.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/js/app.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/js/auth/login.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/js/config.js" charset="UTF-8" />
   </component>
 </project>
