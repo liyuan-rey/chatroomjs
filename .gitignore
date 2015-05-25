@@ -29,6 +29,7 @@ node_modules
 # project custom ignore
 build
 vendor
+.idea
 *.suo
 *.user
 /chatsvr/
