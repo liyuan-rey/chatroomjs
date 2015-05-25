@@ -1,7 +1,8 @@
 {
   "directory": "./vendor",
-  "json": "./bower.json"
-//  "scripts": {
-//    "postinstall": "bower-requirejs -c ./src/js/config.js -b ./vendor/ -e requirejs"
-//  }
+  "json": "./bower.json",
+  "scripts": {
+    "postinstall": "",
+    "preuninstall": ""
+  }
 }
