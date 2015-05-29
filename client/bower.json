@@ -1,9 +1,0 @@
-{
-  "name": "chatroom-client",
-  "version": "0.0.0",
-  "devDependencies": {},
-  "dependencies": {
-    "requirejs": "2.1.17",
-    "jquery": "2.1.4"
-  }
-}

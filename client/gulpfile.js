@@ -4,7 +4,7 @@ var plugins = require('gulp-load-plugins')();
 // https://github.com/gulpjs/gulp/issues/355
 var runSequence = require('run-sequence');
 
-var pkg = require('./bower.json');
+var pkg = require('./package.json');
 
 var buildConfig = require( './build.config.js' );
 

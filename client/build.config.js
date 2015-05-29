@@ -1,6 +1,6 @@
 module.exports = {
 
-    vendor_dir: 'vendor',
+    vendor_dir: 'node_modules',
     app_dir: 'src',
 
     /**
@@ -31,8 +31,8 @@ module.exports = {
      */
     vendor_files: {
         js: [
-            'vendor/requirejs/require.js',
-            'vendor/jquery/dist/jquery.js'
+            'node_modules/requirejs/require.js',
+            'node_modules/jquery/dist/jquery.js'
         ],
         css: [
         ],

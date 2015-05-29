@@ -1,8 +1,0 @@
-{
-  "directory": "./vendor",
-  "json": "./bower.json",
-  "scripts": {
-    "postinstall": "",
-    "preuninstall": ""
-  }
-}
