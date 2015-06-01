@@ -1,12 +1,25 @@
 var gulp = require('gulp');
-var plugins = require('gulp-load-plugins')();
+
+// Automatically load any gulp plugins in package.json
+var plugins = require('gulp-load-plugins')({
+    pattern: ['gulp-*', 'gulp.*'], // the glob(s) to search for
+    config: 'package.json', // where to find the plugins, by default  searched up from process.cwd()
+    scope: ['dependencies', 'devDependencies'], // which keys in the config to look within
+    replaceString: /^gulp(-|\.)/, // what to remove from the name of the module when adding it to the context
+    camelize: true, // if true, transforms hyphenated plugins names to camel case
+    lazy: true, // whether the plugins should be lazy loaded on demand
+    rename: {
+        'gulp-ruby-sass': 'sass'
+    } // a mapping of plugins to rename
+});
+
 // Temporary solution until gulp 4
 // https://github.com/gulpjs/gulp/issues/355
 var runSequence = require('run-sequence');
 
 var pkg = require('./package.json');
 
-var buildConfig = require( './build.config.js' );
+var buildConfig = require('./build.config.js');
 
 /*
  * Helper tasks
@@ -49,16 +62,20 @@ gulp.task('copy:app_js', function () {
 
 gulp.task('default', ['build']);
 
-gulp.task('clean', function(cb) {
+gulp.task('clean', function(callback) {
     require('del')([
         buildConfig.build_dir,
         buildConfig.dist_dir
-    ], cb);
+    ], callback);
 });
 
-gulp.task('build', function(cb) {
+gulp.task('build', function(callback) {
     runSequence(
         ['clean'],
         'copy',
-        cb);
+        callback);
+});
+
+gulp.task('install-package', function(callback) {
+    callback();
 });
