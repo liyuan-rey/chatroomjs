@@ -1,5 +1,7 @@
 module.exports = {
 
+    debug: true, //env.DEBUG ? true : false,
+
     vendor_dir: 'node_modules',
     app_dir: 'src',
 
@@ -30,14 +32,15 @@ module.exports = {
      * recommended that you use wildcards.
      */
     vendor_files: {
-        js: [
-            'node_modules/requirejs/require.js',
-            'node_modules/jquery/dist/jquery.js'
-        ],
-        css: [
-        ],
-        assets: [
-        ]
+        requirejs: ['./node_modules/requirejs/**/require.js'],
+        jquery: [
+            './node_modules/jquery/dist/**/jquery.min.js',
+            './node_modules/jquery/dist/**/jquery.min.map'],
+        bootstrap: [
+            './node_modules/bootstrap/dist/**/*.min.css',
+            './node_modules/bootstrap/dist/**/*.min.js',
+            './node_modules/bootstrap/dist/**/*.map',
+            './node_modules/bootstrap/dist/**/fonts/*.*']
     },
 
     /**
