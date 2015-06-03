@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var gutil = require('gulp-util');
 
 // Automatically load any gulp plugins in package.json
 var plugins = require('gulp-load-plugins')();
@@ -14,14 +15,13 @@ var plugins = require('gulp-load-plugins')();
 //    } // a mapping of plugins to rename
 //});
 
-var gutil = require('gulp-util');
+var es = require('event-stream');
+var series = require('stream-series');
 
 // Temporary solution until gulp 4
 // https://github.com/gulpjs/gulp/issues/355
 var runSequence = require('run-sequence').use(gulp);
-var series = require('stream-series');
 
-var pkg = require('./package.json');
 
 var buildConfig = require('./build.config.js');
 
@@ -35,21 +35,22 @@ var buildConfig = require('./build.config.js');
 
 gulp.task('copy', ['copy:vendor', 'copy:app_js', 'copy:app_html']);
 
-gulp.task('copy:vendor', function(callback) {
-    gulp.src(buildConfig.vendor_files.requirejs)
-        .pipe(buildConfig.debug ? gutil.noop() : plugins.filter(['*', '!**/*.map']))
-        //.pipe(plugins.if(buildConfig.debug, plugins.ignore.exclude('*/*.map')))
-        .pipe(gulp.dest(buildConfig.build_dir + '/vendor/requirejs'));
+gulp.task('copy:vendor', function() {
+    return es.merge(
+        gulp.src(buildConfig.vendor_files.requirejs)
+            .pipe(buildConfig.debug ? gutil.noop() : plugins.filter(['*', '!**/*.map']))
+            //.pipe(plugins.if(buildConfig.debug, plugins.ignore.exclude('*/*.map')))
+            .pipe(gulp.dest(buildConfig.build_dir + '/vendor/requirejs')),
 
-    gulp.src(buildConfig.vendor_files.jquery)
-        .pipe(buildConfig.debug ? gutil.noop() : plugins.filter(['*', '!**/*.map']))
-        .pipe(gulp.dest(buildConfig.build_dir + '/vendor/jquery'));
+        gulp.src(buildConfig.vendor_files.jquery)
+            .pipe(buildConfig.debug ? gutil.noop() : plugins.filter(['*', '!**/*.map']))
+            .pipe(gulp.dest(buildConfig.build_dir + '/vendor/jquery')),
 
-    gulp.src(buildConfig.vendor_files.bootstrap)
-        .pipe(buildConfig.debug ? gutil.noop() : plugins.filter(['**/*', '!**/*.map']))
-        .pipe(gulp.dest(buildConfig.build_dir + '/vendor/bootstrap'));
+        gulp.src(buildConfig.vendor_files.bootstrap)
+            .pipe(buildConfig.debug ? gutil.noop() : plugins.filter(['**/*', '!**/*.map']))
+            .pipe(gulp.dest(buildConfig.build_dir + '/vendor/bootstrap'))
+    );
 
-    callback();
 });
 
 gulp.task('copy:app_html', function () {
@@ -65,30 +66,29 @@ gulp.task('copy:app_js', function () {
         .pipe(gulp.dest(buildConfig.build_dir + '/'));
 });
 
-gulp.task('inject', function(callback) {
-    var t = setTimeout(function () { // work around for win7 delay of file copy/flush
+gulp.task('inject', ['wait'], function() {
+    var csssrc = gulp.src([buildConfig.build_dir + '/vendor/bootstrap/**/css/*.css'], { read: false });
+        //.pipe(plugins.debug({ title: 'gulp-debug:', minimal: false}));
+    var vendorjssrc = gulp.src([
+        buildConfig.build_dir + '/vendor/jquery/*.js',
+        buildConfig.build_dir + '/vendor/bootstrap/js/*.js',
+        buildConfig.build_dir + '/vendor/requirejs/*.js'
+    ], { read: false });
+    var appjssrc = gulp.src([
+        buildConfig.build_dir + '/js/*.js'
+    ], { read: false });
 
-        var csssrc = gulp.src([buildConfig.build_dir + '/vendor/bootstrap/**/css/*.css'], { read: false });
-            //.pipe(plugins.debug({ title: 'gulp-debug:', minimal: false}));
-        var vendorjssrc = gulp.src([
-            buildConfig.build_dir + '/vendor/jquery/*.js',
-            buildConfig.build_dir + '/vendor/bootstrap/js/*.js',
-            buildConfig.build_dir + '/vendor/requirejs/*.js'
-        ], { read: false });
-        var appjssrc = gulp.src([
-            buildConfig.build_dir + '/js/*.js'
-        ], { read: false });
+    return gulp.src(buildConfig.build_dir + '/' + 'index.html')
+        .pipe(plugins.inject(csssrc, { relative: true, starttag: '<!-- inject:css -->' }))
+        .pipe(plugins.inject(series(vendorjssrc, appjssrc), { relative: true, starttag: '<!-- inject:js -->' }))
+        .pipe(gulp.dest(buildConfig.build_dir + '/'));
+});
 
-        gulp.src(buildConfig.build_dir + '/' + 'index.html')
-            .pipe(plugins.inject(csssrc, { relative: true, starttag: '<!-- inject:css -->' }))
-            .pipe(plugins.inject(series(vendorjssrc, appjssrc), { relative: true, starttag: '<!-- inject:js -->' }))
-            .pipe(gulp.dest(buildConfig.build_dir + '/'));
-
+gulp.task('wait', function (callback) { // wait 1s, work around for win7 delay of file copy/flush
+    var t = setTimeout(function () {
         clearTimeout(t);
         t = null;
-
         callback();
-
     }, 1000);
 });
 //gulp.task('copy:jquery', function () {
@@ -127,5 +127,7 @@ gulp.task('bump-version', function () {
 });
 
 gulp.task('prepare-config', function(callback) {
+    var pkg = require('./package.json');
+    //pkg.dependencies
     callback();
 });
