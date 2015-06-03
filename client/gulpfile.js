@@ -126,8 +126,41 @@ gulp.task('bump-version', function () {
         .pipe(gulp.dest('./'));
 });
 
-gulp.task('prepare-config', function(callback) {
-    var pkg = require('./package.json');
-    //pkg.dependencies
-    callback();
+var mainBowerFiles = require('main-bower-files');
+gulp.task('prepare-build-config', ['clean'], function() {
+    //var base = process.cwd();
+    //var pkgFile = './package.json';
+    //var moduleDir = './node_modules/';
+    //
+    //var pkg = require(pkgFile);
+    //for (var p in pkg.dependencies) {
+    //    gutil.log(p.toString());
+    //}
+    //
+    //callback();
+
+    return gulp.src(
+        mainBowerFiles({
+            paths: {
+                bowerDirectory: './node_modules',
+                bowerrc: '',//'./.bowerrc',
+                bowerJson: './package.json'
+            },
+            overrides: {
+                requirejs: {
+                    main: 'require.js'
+                },
+                bootstrap: {
+                    main: 'dist/**/*.*'
+                }
+            }
+            ,filter: ['**', '!**/npm.js']
+            ,checkExistence: true
+            ,debugging: true
+        }),
+        {
+            base: './node_components'
+        })
+        .pipe(gulp.dest('./build/vendor'))
+        .pipe(plugins.debug({ title: 'gulp-debug:', minimal: false}));
 });

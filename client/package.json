@@ -8,9 +8,9 @@
     "url": "https://github.com/liyuan-rey/chatroomjs/blob/master/LICENSE"
   },
   "scripts": {
-    "build": "gulp build",
+    "build": "gulp default",
     "start": "chrome ./build/index.html",
-    "postinstall": "gulp install-package"
+    "postinstall": "gulp prepare-build-config"
   },
   "devDependencies": {
     "del": "~1.2.0",
@@ -26,6 +26,7 @@
     "gulp-rename": "~1.2.2",
     "gulp-uglify": "~1.2.0",
     "gulp-util": "~3.0.5",
+    "main-bower-files": "^2.8.0",
     "run-sequence": "~1.1.0",
     "stream-series": "~0.1.1"
   },
