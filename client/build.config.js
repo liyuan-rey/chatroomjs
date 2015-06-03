@@ -1,17 +1,17 @@
 module.exports = {
 
-    debug: true, //env.DEBUG ? true : false,
+    debug: process.env.DEBUG ? true : false,
 
-    vendor_dir: 'node_modules',
-    app_dir: 'src',
+    vendor_dir: './node_modules',
+    app_dir: './src',
 
     /**
      * The `build_dir` folder is where our projects are compiled during
      * development and the `dist_dir` folder is where our app resides once it's
      * completely built.
      */
-    build_dir: 'build',
-    dist_dir: 'dist',
+    build_dir: './build',
+    dist_dir: './dist',
 
     /**
      * This is the same as `app_files`, except it contains patterns that
