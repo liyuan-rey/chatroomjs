@@ -5,151 +5,145 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Chatroom</title>
-    <!-- inject:css -->
-    <!-- endinject -->
+    <!-- ?inject:css -->
+    <link rel="stylesheet" href="../build/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../build/vendor/bootstrap/css/bootstrap-theme.min.css">
+    <!-- ?endinject -->
     <style type="text/css">
-        .sidebar {
-            z-index: 100;
-            /*opacity: 0.7;*/
-            position: fixed;
-            top: 0;
-            left: 0;
+        html, body {
             height: 100%;
-            width: 170px;
-            /*background-color: #2E2E2D;*/
-            padding: 10px
         }
+
+        body {
+            padding-bottom: 50px;
+        }
+
+        .container-fluid {
+            padding: 0;
+            height: 100%;
+        }
+
+        .row-fluid {
+            height: 100%;
+        }
+
+        .navbar {
+            /*height: 100px;*/
+        }
+
+        #online-list {
+            height: 100%;
+            border-right: solid 1px whitesmoke;
+            overflow-y: auto;
+        }
+
+        #online-list h5 {
+            font-weight: 700;
+            color: #959595;
+        }
+
+        #msg-content {
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        /*#msg-editor textarea {*/
+            /*width: 100%;*/
+        /*}*/
     </style>
 </head>
 <body>
+
 <div class="container-fluid">
     <div class="row-fluid">
-        <div class="col-md-3">
-            <div class="well sidebar">
-                <ul class="nav nav-pills nav-stacked">
-                    <li class="nav-header">Sidebar</li>
-                    <li class="active"><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li class="nav-header">Sidebar</li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li class="nav-header">Sidebar</li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                </ul>
+        <div id="online-list" class="col-sm-3">
+            <h5>
+                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                ROOMMATES
+                <span class="label label-success">3 onlines</span>
+            </h5>
+
+            <div class="list-group">
+                <a href="#" class="list-group-item">Rose</a>
+                <a href="#" class="list-group-item">Mike</a>
+                <a href="#" class="list-group-item">John</a>
             </div>
-            <!--/.well -->
         </div>
-        <!--/.col-md--->
-        <div class="col-md-9">
-            <div class="hero-unit">
-                <h1>Hello, world!</h1>
-
-                <p>This is a template for a simple marketing or informational website. It includes a large callout
-                    called the
-                    hero unit and three supporting pieces of content. Use it as a starting point to create something
-                    more
-                    unique.</p>
-
-                <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-            </div>
-            <div class="row-fluid">
-                <div class="col-md-4">
-                    <h2>Heading</h2>
-
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                        mauris
-                        condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                        mollis euismod.
-                        Donec sed odio dui. </p>
-
-                    <p><a class="btn" href="#">View details &raquo;</a></p>
-                </div>
-                <!--/.col-md--->
-                <div class="col-md-4">
-                    <h2>Heading</h2>
-
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                        mauris
-                        condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                        mollis euismod.
-                        Donec sed odio dui. </p>
-
-                    <p><a class="btn" href="#">View details &raquo;</a></p>
-                </div>
-                <!--/.col-md--->
-                <div class="col-md-4">
-                    <h2>Heading</h2>
-
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                        mauris
-                        condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                        mollis euismod.
-                        Donec sed odio dui. </p>
-
-                    <p><a class="btn" href="#">View details &raquo;</a></p>
-                </div>
-                <!--/.col-md--->
-            </div>
-            <!--/row-->
-            <div class="row-fluid">
-                <div class="col-md-4">
-                    <h2>Heading</h2>
-
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                        mauris
-                        condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                        mollis euismod.
-                        Donec sed odio dui. </p>
-
-                    <p><a class="btn" href="#">View details &raquo;</a></p>
-                </div>
-                <!--/.col-md--->
-                <div class="col-md-4">
-                    <h2>Heading</h2>
-
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                        mauris
-                        condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                        mollis euismod.
-                        Donec sed odio dui. </p>
-
-                    <p><a class="btn" href="#">View details &raquo;</a></p>
-                </div>
-                <!--/.col-md--->
-                <div class="col-md-4">
-                    <h2>Heading</h2>
-
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                        mauris
-                        condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                        mollis euismod.
-                        Donec sed odio dui. </p>
-
-                    <p><a class="btn" href="#">View details &raquo;</a></p>
-                </div>
-                <!--/.col-md--->
-            </div>
-            <!--/row-->
+        <div id="msg-content" class="col-sm-9">
+            content
+            <br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>
+            <br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>
+            <br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>
         </div>
-        <!--/.col-md--->
     </div>
-    <!--/row-->
-
-
 </div>
-<!--/.fluid-container-->
 
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                CHATROOM
+            </a>
+        </div>
 
-<!-- inject:js -->
-<!-- endinject -->
+        <form class="navbar-form navbar-left" id="login-editor" onsubmit="login();">
 
+            <div class="form-group">
+                <label class="sr-only" for="user">User</label>
+                <input type="email" class="form-control" id="user" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="pwd">Password</label>
+                <input type="password" class="form-control" id="pwd" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> Remember me
+                </label>
+            </div>
+        </form>
+
+        <form id="msg-editor" class="navbar-form navbar-left" style="display: none">
+            <p class="navbar-text">Send to:</p>
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">All
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header">Send to:</li>
+                        <li><a href="#">All</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Rose</a></li>
+                        <li><a href="#">Mike</a></li>
+                        <li><a href="#">John</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <p class="navbar-text"></p>
+
+            <div class="form-group">
+                <label class="sr-only" for="msg">Message</label>
+                <textarea class="form-control" id="msg" rows="1" placeholder="Input your message..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
+        </form>
+
+        <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+    </div>
+</nav>
+
+<!-- ?inject:js -->
+<script src="../build/vendor/jquery/jquery.min.js"></script>
+<script src="../build/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- ?endinject -->
+<script type="text/javascript">
+    function login() {
+        $('#login-editor').hide();
+        $('#msg-editor').show();
+    }
+</script>
 </body>
 </html>
