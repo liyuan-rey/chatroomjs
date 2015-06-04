@@ -159,7 +159,7 @@ gulp.task('prepare-build-config', ['clean'], function() {
             ,debugging: true
         }),
         {
-            base: './node_components'
+            base: './node_modules'
         })
         .pipe(gulp.dest('./build/vendor'))
         .pipe(plugins.debug({ title: 'gulp-debug:', minimal: false}));
