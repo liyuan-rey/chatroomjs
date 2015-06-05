@@ -5,10 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Chatroom</title>
-    <!-- ?inject:css -->
-    <link rel="stylesheet" href="../build/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../build/vendor/bootstrap/css/bootstrap-theme.min.css">
-    <!-- ?endinject -->
+    <!-- inject:css -->
+    <!-- endinject -->
     <style type="text/css">
         html, body, .container-fluid, .row-fluid {
             height: 100%;
@@ -22,6 +20,13 @@
             padding: 0;
         }
 
+        .navbar-inverse .checkbox label,
+        .navbar-inverse .navbar-header .navbar-brand,
+        .navbar-inverse .form-group {
+            color: #fff;
+            background-color: transparent;
+        }
+
         #online-list {
             height: 100%;
             border-right: solid 1px #ddd;
@@ -30,13 +35,13 @@
 
         #online-list h5 {
             font-weight: 700;
-            color: #959595;
             padding-top: 12px;
         }
 
         #msg-content {
             height: 100%;
-            padding-bottom: 50px;
+            padding-bottom: 51px;
+            padding-right: 1px;
             overflow-y: auto;
         }
 
@@ -51,13 +56,6 @@
 
         #msg-editor {
             width: 100%;
-        }
-
-        .navbar-inverse .checkbox label,
-        .navbar-inverse .navbar-header .navbar-brand,
-        .navbar-inverse .form-group {
-            color: #fff;
-            background-color: transparent;
         }
 
         .popover {
@@ -99,11 +97,11 @@
             <button type="submit" class="btn btn-success">Sign in</button>
         </form>
 
-        <div class="navbar-right" style="width: 200px; padding-top: 10px; display: none">
+        <div class="navbar-right" id="login-progress" style="width: 200px; padding-top: 10px; display: none">
             <div class="progress">
-                <div class="progress-bar progress-bar-success progress-bar-striped" id="login-progress"
-                     aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                    <span class="sr-only">40% Complete (success)</span>
+                <div class="progress-bar progress-bar-success progress-bar-striped active"
+                     aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                    <span>login...</span>
                 </div>
             </div>
         </div>
@@ -121,7 +119,7 @@
 <div class="container-fluid">
     <div class="row-fluid">
         <div id="online-list" class="col-sm-3">
-            <h5>
+            <h5 class="text-primary">
                 <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                 ROOMMATES
                 <span class="label label-success pull-right">3 onlines</span>
@@ -201,7 +199,7 @@
                             <div class="input-group" style="width: 100%">
                                 <input type="text" class="form-control" id="msg" placeholder="Type your message...">
                                 <span class="input-group-btn">
-                                    <button type="submit" class="btn btn-default" type="button">
+                                    <button type="submit" class="btn btn-default">
                                         <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
                                     </button>
                                 </span>
@@ -216,35 +214,35 @@
 </div>
 
 
-<!-- ?inject:js -->
-<script src="../build/vendor/jquery/jquery.min.js"></script>
-<script src="../build/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!-- ?endinject -->
+<!-- inject:js -->
+<!-- endinject -->
 <script type="text/javascript">
     function login() {
         $('#login-editor').hide();
+
+        var bar = $('.progress .progress-bar');
+        bar.addClass('active');
         $('#login-progress').show();
 
-        var count = 0;
-        var timer = setInterval(function(){
-            if (count > 100) {
-                $('#login-progress').hide();
-                $('#logout-editor').show();
+        var timer = setTimeout(function () {
+            $('#login-progress').hide();
+            bar.removeClass('active');
+            $('#logout-editor').show();
 
-                clearInterval(timer);
-                timer = null;
-            }
-
-            $('#login-progress').setProperty('aria-valuenow', '' + count);
-            count++;
-        }, 20);
+            clearInterval(timer);
+            timer = null;
+        }, 1000);
     }
     function logout() {
         $('#logout-editor').hide();
         $('#login-editor').show();
     }
     function chat() {
-
+        var tmpl = $('#chat-list .popover')[2];
+        var inst = tmpl.cloneNode(true);
+        var chatlist = $('#chat-list');
+        chatlist.append(inst);
+        chatlist.animate({scrollTop: chatlist.height()}, 1000);
     }
 </script>
 </body>
