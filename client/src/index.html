@@ -199,7 +199,7 @@
                             <div class="input-group" style="width: 100%">
                                 <input type="text" class="form-control" id="msg" placeholder="Type your message...">
                                 <span class="input-group-btn">
-                                    <button type="submit" class="btn btn-default">
+                                    <button type="submit" class="btn btn-default" id="submitMsg">
                                         <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
                                     </button>
                                 </span>
@@ -238,11 +238,16 @@
         $('#login-editor').show();
     }
     function chat() {
-        var tmpl = $('#chat-list .popover')[2];
-        var inst = tmpl.cloneNode(true);
+        $('#submitMsg')[0].disabled = true;
+        setTimeout(function () {
+            $('#submitMsg')[0].disabled = false;
+        }, 2000);
+
+        var tmpl = $('#chat-list .popover').last();
+        var inst = tmpl.clone(true);
         var chatlist = $('#chat-list');
         chatlist.append(inst);
-        chatlist.animate({scrollTop: chatlist.height()}, 1000);
+        chatlist.animate({scrollTop: chatlist.scrollTop() + inst.offset().top}, 1000);
     }
 </script>
 </body>
