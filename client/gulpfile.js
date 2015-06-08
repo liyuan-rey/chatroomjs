@@ -84,7 +84,7 @@ gulp.task('inject', ['wait'], function() {
         .pipe(gulp.dest(buildConfig.build_dir + '/'));
 });
 
-gulp.task('wait', function (callback) { // wait 1s, work around for win7 delay of file copy/flush
+gulp.task('wait', function (callback) { // wait 1 second, work around for delay of file copy/flush on win7
     var t = setTimeout(function () {
         clearTimeout(t);
         t = null;
