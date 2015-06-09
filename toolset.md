@@ -56,6 +56,7 @@ browserify - [http://browserify.org/](http://browserify.org/)
 webpack - [http://webpack.github.io/](http://webpack.github.io/)
 
 ## minimizing - UglifyJS vs Closure Compiler
+Here is a compare from Uglify, [http://lisperator.net/blog/should-you-switch-to-uglifyjs2/](http://lisperator.net/blog/should-you-switch-to-uglifyjs2/)
 UglifyJS - [http://lisperator.net/uglifyjs/](http://lisperator.net/uglifyjs/), and already included in webpack
 
 Closure Compiler - [https://github.com/google/closure-compiler](https://github.com/google/closure-compiler)
