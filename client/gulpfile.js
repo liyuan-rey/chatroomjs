@@ -62,16 +62,18 @@ gulp.task('copy:app_js', function () {
     return gulp.src(buildConfig.app_files.js)
         //.pipe(plugins.concat('app.js'))
         .pipe(plugins.rename({suffix: '.min'}))
-        .pipe(plugins.uglify())
+        //.pipe(plugins.uglify())
         .pipe(gulp.dest(buildConfig.build_dir + '/'));
 });
 
 gulp.task('inject', ['wait'], function() {
-    var csssrc = gulp.src([buildConfig.build_dir + '/vendor/bootstrap/**/css/*.css'], { read: false });
+    var csssrc = gulp.src([
+        buildConfig.build_dir + '/vendor/bootstrap/**/css/*.css'
+    ], { read: false });
         //.pipe(plugins.debug({ title: 'gulp-debug:', minimal: false}));
     var vendorjssrc = gulp.src([
-        buildConfig.build_dir + '/vendor/jquery/*.js',
-        buildConfig.build_dir + '/vendor/bootstrap/js/*.js',
+//        buildConfig.build_dir + '/vendor/jquery/*.js',
+//        buildConfig.build_dir + '/vendor/bootstrap/js/*.js',
         buildConfig.build_dir + '/vendor/requirejs/*.js'
     ], { read: false });
     var appjssrc = gulp.src([

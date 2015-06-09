@@ -2,48 +2,80 @@
 // since app.js is the entry point of the js web application, app.js is not defined as a amd module.
 
 requirejs.config({
-    baseUrl: './',
+    baseUrl: './js/',
     paths: {
-        jquery: '../vendor/jquery/jquery.min.js',
-        bootstrap: '../vendor/bootstrap/js/bootstrap.min.js'
+        jquery: '../vendor/jquery/jquery.min',
+        bootstrap: '../vendor/bootstrap/js/bootstrap.min'
     },
     shim: {
-        'bootstrap/bootstrap-slider': { deps: ['jquery'], exports: '$.fn.slider' },
-        'bootstrap/bootstrap-affix': { deps: ['jquery'], exports: '$.fn.affix' },
-        'bootstrap/bootstrap-alert': { deps: ['jquery'], exports: '$.fn.alert' },
-        'bootstrap/bootstrap-button': { deps: ['jquery'], exports: '$.fn.button' },
-        'bootstrap/bootstrap-carousel': { deps: ['jquery'], exports: '$.fn.carousel' },
-        'bootstrap/bootstrap-collapse': { deps: ['jquery'], exports: '$.fn.collapse' },
-        'bootstrap/bootstrap-dropdown': { deps: ['jquery'], exports: '$.fn.dropdown' },
-        'bootstrap/bootstrap-modal': { deps: ['jquery'], exports: '$.fn.modal' },
-        'bootstrap/bootstrap-popover': { deps: ['jquery'], exports: '$.fn.popover' },
-        'bootstrap/bootstrap-scrollspy': { deps: ['jquery'], exports: '$.fn.scrollspy'        },
-        'bootstrap/bootstrap-tab': { deps: ['jquery'], exports: '$.fn.tab' },
-        'bootstrap/bootstrap-tooltip': { deps: ['jquery'], exports: '$.fn.tooltip' },
-        'bootstrap/bootstrap-transition': { deps: ['jquery'], exports: '$.support.transition' },
-        'bootstrap/bootstrap-typeahead': { deps: ['jquery'], exports: '$.fn.typeahead'  }
+        // Since Bootstrap 3, all code is executed in closures and added to jQuery as a plugin.
+        // There is nothing to export, so you have to put bootstrap to the last dependency.
+        // Use below style, requirejs return a value, so we can put bootstrap to any position of
+        // dependencies, and make the code more clearly. See more:
+        //   http://getfishtank.ca/blog/how-to-use-bootstrap-3-with-requirejs
+        //   http://getfishtank.ca/blog/load-bootstrap-3-javascript-components-using-requirejs
+        //
+        // 'bootstrap/bootstrap-popover': { deps: ['jquery'], exports: '$.fn.popover' }
     }
 });
 
-require(['require', 'jquery', './auth/login'], function(require, $, login) {
+require(['require', 'jquery', 'bootstrap'], function (require, $) {
     'use strict';
 
     //$('log').text('running in app.js\n');
 
-    $('document').one('ready', function (e) {
-        alert('document is ready');
+    // dom ready
+    $(function () {
 
-        $('testbtn').on('click', function (e) {
-            e.preventDefault();
-            alert('test btn clicked');
-            login.onTest(e);
-        })
+        require(['./auth/login.min'], function (login) {
+
+            // do login
+            $('#login-editor').on('submit', function (e) {
+                e.preventDefault();
+
+                $('#login-editor').hide();
+
+                var bar = $('.progress .progress-bar');
+                bar.addClass('active');
+                $('#login-progress').show();
+
+                //  login.onTest(e);
+
+                var timer = setTimeout(function () {
+                    $('#login-progress').hide();
+                    bar.removeClass('active');
+                    $('#logout-editor').show();
+
+                    clearInterval(timer);
+                    timer = null;
+                }, 1000);
+            });
+
+            // do logout
+            $('#logout-editor').on('submit', function (e) {
+                e.preventDefault();
+
+                $('#logout-editor').hide();
+                $('#login-editor').show();
+            });
+
+            // do chat
+            $('#msg-editor').on('submit', function (e) {
+                e.preventDefault();
+
+                $('#submitMsg')[0].disabled = true;
+                setTimeout(function () {
+                    $('#submitMsg')[0].disabled = false;
+                }, 2000);
+
+                var tmpl = $('#chat-list .popover').last();
+                var inst = tmpl.clone(true);
+                var chatlist = $('#chat-list');
+                chatlist.append(inst);
+                chatlist.animate({scrollTop: chatlist.scrollTop() + inst.offset().top}, 1000);
+            });
+
+        });
     });
-
-
-    //require(['jquery', './auth/login'], function($, login) {
-    //    $('testbtn').click = login.onTest;
-    //});
-
 });
 
