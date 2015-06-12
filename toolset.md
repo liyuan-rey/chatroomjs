@@ -91,6 +91,19 @@ less - [http://www.lesscss.org/](http://www.lesscss.org/)
 
 ## database - ?
 
+## utility libraries - underscore vs lodash
+Both library is briliant and have more than 70% same feature with closly performence.
+These two libs will merge in future, see: [https://github.com/jashkenas/underscore/issues/2182](https://github.com/jashkenas/underscore/issues/2182)
+
+For this moment, i perfer lodash more cause it's concise api style.
+
+http://stackoverflow.com/questions/13789618/differences-between-lodash-and-underscore
+https://lodash.com/benchmarks
+http://jsperf.com/lodash-underscore/13
+
+underscore - [http://underscorejs.org/](http://underscorejs.org/)
+
+lodash - [https://lodash.com/](https://lodash.com/)
 
 ```
 to be continue...
