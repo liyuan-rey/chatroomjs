@@ -48,7 +48,10 @@ gulp.task('copy:vendor', function() {
 
         gulp.src(buildConfig.vendor_files.bootstrap)
             .pipe(buildConfig.debug ? gutil.noop() : plugins.filter(['**/*', '!**/*.map']))
-            .pipe(gulp.dest(buildConfig.build_dir + '/vendor/bootstrap'))
+            .pipe(gulp.dest(buildConfig.build_dir + '/vendor/bootstrap')),
+
+        gulp.src(buildConfig.vendor_files.lodash)
+            .pipe(gulp.dest(buildConfig.build_dir + '/vendor/lodash'))
     );
 
 });

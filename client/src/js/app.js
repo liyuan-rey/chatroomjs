@@ -5,7 +5,8 @@ requirejs.config({
     baseUrl: './js/',
     paths: {
         jquery: '../vendor/jquery/jquery.min',
-        bootstrap: '../vendor/bootstrap/js/bootstrap.min'
+        bootstrap: '../vendor/bootstrap/js/bootstrap.min',
+        lodash: '../vendor/lodash/index'
     },
     shim: {
         // Since Bootstrap 3, all code is executed in closures and added to jQuery as a plugin.
@@ -19,10 +20,11 @@ requirejs.config({
     }
 });
 
-require(['require', 'jquery', 'bootstrap'], function (require, $) {
+require(['require', 'jquery', 'lodash', 'bootstrap'], function (require, $, _) {
     'use strict';
 
     //$('log').text('running in app.js\n');
+    //$(form).trigger('submit', [true]);
 
     // dom ready
     $(function () {
@@ -39,7 +41,10 @@ require(['require', 'jquery', 'bootstrap'], function (require, $) {
                 bar.addClass('active');
                 $('#login-progress').show();
 
-                //  login.onTest(e);
+                //
+                var user = $('#user').val();
+                var pwd = $('#pwd').val();
+                login.login(user, pwd);
 
                 var timer = setTimeout(function () {
                     $('#login-progress').hide();
@@ -55,6 +60,7 @@ require(['require', 'jquery', 'bootstrap'], function (require, $) {
             $('#logout-editor').on('submit', function (e) {
                 e.preventDefault();
 
+                login.logout();
                 $('#logout-editor').hide();
                 $('#login-editor').show();
             });
@@ -66,7 +72,7 @@ require(['require', 'jquery', 'bootstrap'], function (require, $) {
                 $('#submitMsg')[0].disabled = true;
                 setTimeout(function () {
                     $('#submitMsg')[0].disabled = false;
-                }, 2000);
+                }, 1500);
 
                 var tmpl = $('#chat-list .popover').last();
                 var inst = tmpl.clone(true);

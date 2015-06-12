@@ -1,19 +1,39 @@
 // login.js
 
-define(['require', 'jquery'], function(require, $) {
+define(['require', 'jquery'], function (require, $) {
     'use strict';
 
-    var log = $('log');
-    log.textContent += 'loading login.js\n';
+    var login = {};
 
-    var obj = {};
-    obj.onTest = function (data, fn) {
-        var user = $('username').value;
-        var pwd = $('password').value;
+    login.LOGED_IN = 'Logged In';
+    login.LOGED_OUT = 'Logged Out';
+    login.LOGINING = 'Logining';
 
-        var log = $('log');
-        log.textContent += user + ':' + pwd + '\n';
+    login.status = login.LOGED_OUT;
+    login.onStatusChanged = function (status) {
     };
 
-    return obj;
+    login.init = function () {
+    };
+
+    login.login = function (user, pwd) {
+        this.status = login.LOGED_IN;
+        return true;
+
+        $.post("http://localhost:3000/login/",
+            {username: user, password: pwd},
+            function (data) {
+                if (data == "ko") {
+                    alert('bad password');
+                } else {
+                    $(selfForm).trigger('submit', [true]); // again submit but with ok parameter
+                }
+        });
+    };
+
+    login.logout = function () {
+        this.status = login.LOGED_OUT;
+    };
+
+    return login;
 });

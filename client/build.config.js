@@ -40,7 +40,8 @@ module.exports = {
             './node_modules/bootstrap/dist/**/*.min.css',
             './node_modules/bootstrap/dist/**/*.min.js',
             './node_modules/bootstrap/dist/**/*.map',
-            './node_modules/bootstrap/dist/**/fonts/*.*']
+            './node_modules/bootstrap/dist/**/fonts/*.*'],
+        lodash: ['./node_modules/lodash/**/index.js']
     },
 
     /**
