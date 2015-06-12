@@ -19,10 +19,15 @@ Bower - [http://bower.io/](http://bower.io/)
 
 ## task runner - grunt vs gulp vs Broccoli
 grunt vs gulp? no winner. There are many article compared the two great tools. 
+
 [http://sixrevisions.com/web-development/grunt-vs-gulp/](http://sixrevisions.com/web-development/grunt-vs-gulp/), 
-[https://medium.com/@preslavrachev/gulp-vs-grunt-why-one-why-the-other-f5d3b398edc4](https://medium.com/@preslavrachev/gulp-vs-grunt-why-one-why-the-other-f5d3b398edc4), 
+
+[https://medium.com/@preslavrachev/gulp-vs-grunt-why-one-why-the-other-f5d3b398edc4](https://medium.com/@preslavrachev/gulp-vs-grunt-why-one-why-the-other-f5d3b398edc4),
+ 
 [http://www.hongkiat.com/blog/gulp-vs-grunt/](http://www.hongkiat.com/blog/gulp-vs-grunt/), 
+
 [http://jaysoo.ca/2014/01/27/gruntjs-vs-gulpjs/](http://jaysoo.ca/2014/01/27/gruntjs-vs-gulpjs/).
+
 
 Broccoli has some interesting ideas, but not production-ready, need more development.
 
@@ -46,6 +51,13 @@ ember-cli - [http://www.ember-cli.com/](http://www.ember-cli.com/)
 As a reference, requirejs has a article describ why they prefer AMD than CommonJS on web page:
  [http://www.requirejs.org/docs/whyamd.html](http://www.requirejs.org/docs/whyamd.html)
 
+CommonJS - 
+
+AMD - 
+
+TypeScript - [http://www.typescriptlang.org/](http://www.typescriptlang.org/)
+
+Babel - [https://babeljs.io/](https://babeljs.io/)
 
 ## module bundler - browserify vs webpack
 webpack has a valuable article which describ the difference between some major competition tools, please check:
@@ -57,6 +69,7 @@ webpack - [http://webpack.github.io/](http://webpack.github.io/)
 
 ## minimizing - UglifyJS vs Closure Compiler
 Here is a compare from Uglify, [http://lisperator.net/blog/should-you-switch-to-uglifyjs2/](http://lisperator.net/blog/should-you-switch-to-uglifyjs2/)
+
 UglifyJS - [http://lisperator.net/uglifyjs/](http://lisperator.net/uglifyjs/), and already included in webpack
 
 Closure Compiler - [https://github.com/google/closure-compiler](https://github.com/google/closure-compiler)
@@ -104,6 +117,13 @@ http://jsperf.com/lodash-underscore/13
 underscore - [http://underscorejs.org/](http://underscorejs.org/)
 
 lodash - [https://lodash.com/](https://lodash.com/)
+
+
+## HyperApp - electron(atom-shell) vs codova vs phonecap vs appjs vs node-webkit
+
+electron - [http://electron.atom.io/](http://electron.atom.io/)
+
+
 
 ```
 to be continue...
