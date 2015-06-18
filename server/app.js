@@ -4,6 +4,7 @@ var http = require('http');
 var express = require('express');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var passport = require('passport');
 
 var login = require('./routes/login');
 var users = require('./routes/users');
@@ -12,7 +13,7 @@ var app = express();
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-
+app.use(passport.initialize());
 
 app.use('/login', login);
 app.use('/users', users);

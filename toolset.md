@@ -156,6 +156,12 @@ lodash - [https://lodash.com/](https://lodash.com/)
 electron - [http://electron.atom.io/](http://electron.atom.io/)
 
 
+## other libraries
+Passport - http://passportjs.org/
+Passport is authentication middleware for Node.
+
+
+
 ```
 to be continue...
 ```

@@ -8,7 +8,7 @@ function DataContext() {
         DataContext.prototype.onlineUsers = new DataSet();
         DataContext.prototype.users = new DataSet();
         
-        var user = new User('admin', '123456');
+        var user = new User('admin', '123456');//Authorization: Basic YWRtaW46MTIzNDU2
         DataContext.prototype.users.add(user);
     }
 };
