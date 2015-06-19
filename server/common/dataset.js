@@ -24,7 +24,7 @@ function DataSet() {
     };
 
     arr.remove = function (id) {
-        var removed = _.remove(arr, { id: newItem.id });
+        var removed = _.remove(arr, { id: id });
         return removed[0];
     };
 
