@@ -13,7 +13,7 @@ var datactx = require('./data/datacontext');
 var chats = require('./routes/chats');
 var users = require('./routes/users');
 
-// express app begin
+// begin app bootstrap
 var app = express();
 
 app.use(logger('dev'));
@@ -43,7 +43,7 @@ function checkPassword(password, user) {
     return user.password === password;
 }
 
-// app routes
+// app routes setup
 app.use('/api/chats', chats);
 app.use('/api/users', users);
 
@@ -55,10 +55,7 @@ app.use(function (req, res, next) {
 });
 
 // error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
+if (app.get('env') === 'development') { // development error handler will print stacktrace
     app.use(function (err, req, res, next) {
         res.status(err.status || 500);
         //res.render('error', {
@@ -69,8 +66,7 @@ if (app.get('env') === 'development') {
     });
 }
 
-// production error handler
-// no stacktraces leaked to user
+// production error handler no stacktraces leaked to user
 app.use(function (err, req, res, next) {
     //res.status(err.status || 500);
     //res.render('error', {
