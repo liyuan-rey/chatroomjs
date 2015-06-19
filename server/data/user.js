@@ -7,7 +7,7 @@ function User(name, password) {
     this.name = name;
     this.password = password;
     this.lastActivedTime = new Date(0);
-};
+}
 
 
 module.exports = User;

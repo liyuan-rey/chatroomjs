@@ -1,6 +1,6 @@
 // datacontext.js
 
-var DataSet = require('./dataset');
+var DataSet = require('../common/dataset');
 var User = require('./user');
 
 function DataContext() {
@@ -11,7 +11,7 @@ function DataContext() {
         var user = new User('admin', '123456');//Authorization: Basic YWRtaW46MTIzNDU2
         DataContext.prototype.users.add(user);
     }
-};
+}
 
 
 module.exports = new DataContext();

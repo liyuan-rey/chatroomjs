@@ -5,19 +5,21 @@ var datactx = require('../data/datacontext');
 var router = express.Router();
 var passport = require('passport');
 var BasicStrategy = require('passport-http').BasicStrategy;
+var _ = require('lodash');
 var errCode = require('../errcode');
 
 // authenticate
 passport.use(new BasicStrategy(
-    function (userid, password, done) {
+    function (username, password, done) {
         try {
-            var user = findUser(userid);
+            var user = datactx.users.find({ name: username });
 
-            if (!user || !checkPassword(user, password)) {
+            if (!user || !checkPassword(password, user)) {
                 return done(null, false); //errCode.INVALID_USER_PASSWORD
             }
 
-            if (!checkRepeatLogin(user.name)) {
+            //check repeat login
+            if (_.some(datactx.onlineUsers, { name: username })) {
                 return done(null, false); //errCode.USER_ALREADY_LOGIN
             }
 
@@ -30,36 +32,19 @@ passport.use(new BasicStrategy(
 ));
 
 /* GET login. */
-router.get('/', passport.authenticate('basic', {session: false}), function (req, res) {
+router.get('/', passport.authenticate('basic', { session: false }), function (req, res) {
     var user = req.user;
     user.lastActivedTime = new Date();
 
     if (datactx.onlineUsers.add(user))
-        res.json({user_token: user.id});
+        res.json({ user_token: user.id });
     else
         res.status(400).send('User Login fail.');
 });
 
-module.exports = router;
-
-function checkPassword(user, password) {
+function checkPassword(password, user) {
     return user.password === password;
 }
 
-function checkRepeatLogin(username) {
-    for (var i = 0; i < datactx.onlineUsers.length; i++) {
-        if (username === datactx.onlineUsers[i].name) {
-            return false;
-        }
-    }
-    return true;
-}
 
-function findUser(username) {
-    for (var i = 0; i < datactx.users.length; i++) {
-        if (username === datactx.users[i].name) {
-            return datactx.users[i];
-        }
-    }
-    return null;
-}
+module.exports = router;
