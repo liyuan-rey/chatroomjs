@@ -88,6 +88,10 @@ webpack-dev-server - [http://webpack.github.io/docs/webpack-dev-server.html](htt
 
 
 ### unit test - Mocha vs Karma vs Intern
+Mocha is a widely used javascript test framework.
+Karma seems not a test 'FRAMEWORK', but a test 'RUNNER' which can intergrated with many test framework like Mocha, [Jasmine](http://jasmine.github.io/).
+Intern has both 'framework' and 'runner' features. Intern's home page has a comparison shows differences between various javascript test technologies including Mocha and Karma.
+
 Mocha - [http://mochajs.org/](http://mochajs.org/)
 
 Karma - [http://karma-runner.github.io/](http://karma-runner.github.io/)
