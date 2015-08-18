@@ -4,8 +4,6 @@ var http = require('http');
 var express = require('express');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-var passport = require('passport');
-var BasicStrategy = require('passport-http').BasicStrategy;
 var _ = require('lodash');
 
 var errCode = require('./errcode');
@@ -18,30 +16,6 @@ var app = express();
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-
-// authentication initialize
-app.use(passport.initialize());
-
-passport.use(new BasicStrategy(
-    function (username, password, done) {
-        try {
-            var user = datactx.users.find({ name: username });
-
-            if (!user || !checkPassword(password, user)) {
-                return done(null, false); //errCode.INVALID_USER_PASSWORD
-            }
-
-            return done(null, user);
-        }
-        catch (err) {
-            return done(err);
-        }
-    }
-));
-
-function checkPassword(password, user) {
-    return user.password === password;
-}
 
 // app routes setup
 app.use('/api/chats', chats);

@@ -1,14 +1,14 @@
 // users.js
 
 var express = require('express');
-var router = express.Router();
-var passport = require('passport');
 var _ = require('lodash');
 var errCode = require('../errcode');
 var datactx = require('../data/datacontext');
 
+var router = express.Router();
+
 /* GET login. */
-router.get('/login', passport.authenticate('basic', { session: false }), function (req, res) {
+router.get('/login', function (req, res) {
     var user = req.user;
 
     //check repeat login
@@ -24,7 +24,7 @@ router.get('/login', passport.authenticate('basic', { session: false }), functio
 });
 
 /* GET online users. */
-router.get('/online', passport.authenticate('basic', { session: false }), function (req, res) {
+router.get('/online', function (req, res) {
     var result = _.map(datactx.onlineUsers, function (u) {
         return { id: u.id, name: u.name };
     });
