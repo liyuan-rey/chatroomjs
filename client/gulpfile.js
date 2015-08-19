@@ -50,6 +50,9 @@ gulp.task('copy:vendor', function() {
             .pipe(buildConfig.debug ? gutil.noop() : plugins.filter(['**/*', '!**/*.map']))
             .pipe(gulp.dest(buildConfig.build_dir + '/vendor/bootstrap')),
 
+        gulp.src(buildConfig.vendor_files['socket.io-client'])
+            .pipe(gulp.dest(buildConfig.build_dir + '/vendor/socket.io-client')),
+
         gulp.src(buildConfig.vendor_files.lodash)
             .pipe(gulp.dest(buildConfig.build_dir + '/vendor/lodash'))
     );
@@ -70,22 +73,22 @@ gulp.task('copy:app_js', function () {
 });
 
 gulp.task('inject', ['wait'], function() {
-    var csssrc = gulp.src([
+    var css_src = gulp.src([
         buildConfig.build_dir + '/vendor/bootstrap/**/css/*.css'
     ], { read: false });
         //.pipe(plugins.debug({ title: 'gulp-debug:', minimal: false}));
-    var vendorjssrc = gulp.src([
+    var vendor_js_src = gulp.src([
 //        buildConfig.build_dir + '/vendor/jquery/*.js',
 //        buildConfig.build_dir + '/vendor/bootstrap/js/*.js',
         buildConfig.build_dir + '/vendor/requirejs/*.js'
     ], { read: false });
-    var appjssrc = gulp.src([
+    var app_js_src = gulp.src([
         buildConfig.build_dir + '/js/*.js'
     ], { read: false });
 
     return gulp.src(buildConfig.build_dir + '/' + 'index.html')
-        .pipe(plugins.inject(csssrc, { relative: true, starttag: '<!-- inject:css -->' }))
-        .pipe(plugins.inject(series(vendorjssrc, appjssrc), { relative: true, starttag: '<!-- inject:js -->' }))
+        .pipe(plugins.inject(css_src, { relative: true, starttag: '<!-- inject:css -->' }))
+        .pipe(plugins.inject(series(vendor_js_src, app_js_src), { relative: true, starttag: '<!-- inject:js -->' }))
         .pipe(gulp.dest(buildConfig.build_dir + '/'));
 });
 

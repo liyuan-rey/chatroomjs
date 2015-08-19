@@ -6,6 +6,7 @@ requirejs.config({
     paths: {
         jquery: '../vendor/jquery/jquery.min',
         bootstrap: '../vendor/bootstrap/js/bootstrap.min',
+        'socket.io-client': '../vendor/socket.io-client/socket.io',
         lodash: '../vendor/lodash/index'
     },
     shim: {

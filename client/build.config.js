@@ -41,6 +41,7 @@ module.exports = {
             './node_modules/bootstrap/dist/**/*.min.js',
             './node_modules/bootstrap/dist/**/*.map',
             './node_modules/bootstrap/dist/**/fonts/*.*'],
+        'socket.io-client': ['./node_modules/socket.io-client/**/socket.io.js'],
         lodash: ['./node_modules/lodash/**/index.js']
     },
 

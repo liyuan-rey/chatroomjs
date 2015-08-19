@@ -1,6 +1,6 @@
 // login.js
 
-define(['require', 'jquery'], function (require, $) {
+define(['require', 'jquery', 'socket.io-client'], function (require, $, io) {
     'use strict';
 
     var login = {};
@@ -17,6 +17,12 @@ define(['require', 'jquery'], function (require, $) {
     };
 
     login.login = function (user, pwd) {
+        debug.break();
+        var socket = io('http://localhost:3000');
+        socket.on('connect', function (data) {
+            var tmp = data;
+        });
+
         this.status = login.LOGED_IN;
         return true;
 
