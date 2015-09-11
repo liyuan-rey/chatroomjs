@@ -1,5 +1,7 @@
 # chatroomjs
-A demo chatroom application that using nodejs, websocket, angularjs and more.
+A demo chatroom application that using nodejs, expressjs, socket.io(websocket), angularjs, twitter bootstrap and more.
+
+![chatroom ui](./doc/chatroom.png)
 
 ## Tools selection while develop this demo
 
@@ -14,7 +16,7 @@ Nick Heiner has described his reason
 [here](https://medium.com/@nickheiner/why-my-team-uses-npm-instead-of-bower-eecfe1b9afcb).
 
 For me, all things that Bower can do, npm can do either. 
-As npm more widely used in package manager field, my choice is npm.
+As npm more widely used in the field of package manager, my choice is npm.
 
 npm - [https://www.npmjs.com/](https://www.npmjs.com/)
 
@@ -22,6 +24,8 @@ Bower - [http://bower.io/](http://bower.io/)
 
 
 ### task runner - grunt vs gulp vs Broccoli
+Broccoli has some interesting ideas, but not production-ready, need more development.
+
 grunt vs gulp? no winner. There are many article compared the two great tools. 
 
 [http://sixrevisions.com/web-development/grunt-vs-gulp/](http://sixrevisions.com/web-development/grunt-vs-gulp/), 
@@ -31,8 +35,6 @@ grunt vs gulp? no winner. There are many article compared the two great tools.
 [http://www.hongkiat.com/blog/gulp-vs-grunt/](http://www.hongkiat.com/blog/gulp-vs-grunt/), 
 
 [http://jaysoo.ca/2014/01/27/gruntjs-vs-gulpjs/](http://jaysoo.ca/2014/01/27/gruntjs-vs-gulpjs/).
-
-Broccoli has some interesting ideas, but not production-ready, need more development.
 
 In my opinion, gulp is a good start for new project. 
 
@@ -46,6 +48,8 @@ Broccoli - [https://github.com/broccolijs/broccoli](https://github.com/broccolij
 ### code generator - Yeoman vs ember-cli
 ember-cli is deeply sticked with EmberJS, seems not a widly suitable tool.
 
+So Yeoman is the chosen one.
+
 Yeoman - [http://yeoman.io/](http://yeoman.io/)
 
 ember-cli - [http://www.ember-cli.com/](http://www.ember-cli.com/)
@@ -55,6 +59,9 @@ ember-cli - [http://www.ember-cli.com/](http://www.ember-cli.com/)
 As a reference, requirejs has a article describ why they prefer AMD than CommonJS on web page:
  [http://www.requirejs.org/docs/whyamd.html](http://www.requirejs.org/docs/whyamd.html)
 
+It is more wisely that use appropriate patten in different environment, use AMD in current web browser, follow CommonJS in NodeJS,
+ and migrate to ES2015 if any possible.
+ 
 CommonJS - [http://wiki.commonjs.org/wiki/CommonJS](http://wiki.commonjs.org/wiki/CommonJS)
 
 AMD - [https://github.com/amdjs/amdjs-api/](https://github.com/amdjs/amdjs-api/)
@@ -68,6 +75,8 @@ Babel - [https://babeljs.io/](https://babeljs.io/)
 webpack has a valuable article which describ the difference between some major competition tools, please check:
  [http://webpack.github.io/docs/comparison.html](http://webpack.github.io/docs/comparison.html)
 
+My choice is webpack.
+
 browserify - [http://browserify.org/](http://browserify.org/)
 
 webpack - [http://webpack.github.io/](http://webpack.github.io/)
@@ -75,6 +84,8 @@ webpack - [http://webpack.github.io/](http://webpack.github.io/)
 
 ### minimizing - UglifyJS vs Closure Compiler
 Here is a compare from Uglify, [http://lisperator.net/blog/should-you-switch-to-uglifyjs2/](http://lisperator.net/blog/should-you-switch-to-uglifyjs2/)
+
+My choice is UglifyJS.
 
 UglifyJS - [http://lisperator.net/uglifyjs/](http://lisperator.net/uglifyjs/), and already included in webpack
 
@@ -92,6 +103,8 @@ Mocha is a widely used javascript test framework.
 Karma seems not a test 'FRAMEWORK', but a test 'RUNNER' which can intergrated with many test framework like Mocha, [Jasmine](http://jasmine.github.io/).
 Intern has both 'framework' and 'runner' features. Intern's home page has a comparison shows differences between various javascript test technologies including Mocha and Karma.
 
+My choice is Intern.
+
 Mocha - [http://mochajs.org/](http://mochajs.org/)
 
 Karma - [http://karma-runner.github.io/](http://karma-runner.github.io/)
@@ -103,6 +116,8 @@ Intern - [https://theintern.github.io/](https://theintern.github.io/)
 Jani Hartikainen wrote a nice article 
 [here](http://www.sitepoint.com/comparison-javascript-linting-tools/).
 
+My choice is ESLint.
+
 ESLint - [http://eslint.org/](http://eslint.org/)
 
 JSHint - [http://www.jshint.com/](http://www.jshint.com/)
@@ -113,6 +128,8 @@ JSCS - [http://jscs.info/](http://jscs.info/)
 
 
 ### ui framework - AngularJS vs React
+AngularJS is more regular to me, I'm not get used to React since it's JSX style.
+
 AngularJS - [https://angularjs.org/](https://angularjs.org/)
 
 React - [http://facebook.github.io/react/](http://facebook.github.io/react/)
