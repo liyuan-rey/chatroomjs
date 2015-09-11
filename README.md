@@ -174,8 +174,18 @@ underscore - [http://underscorejs.org/](http://underscorejs.org/)
 lodash - [https://lodash.com/](https://lodash.com/)
 
 
-### HyperApp - electron(atom-shell) vs node-webkit vs codova vs phonecap vs appjs
-electron - [http://electron.atom.io/](http://electron.atom.io/)
+### HyperApp - Electron(atom-shell) vs NW.js(node-webkit) vs Apache Cordova vs PhoneCap
+Electron and NW.js is for desktop application, Cordova and PhoneCap prefer mobile app.
+
+In desktop, I choice Electron. In mobile, especially phone environment, I choice Apache Cordova.
+
+Electron - [http://electron.atom.io/](http://electron.atom.io/)
+
+NW.js - [http://nwjs.io/](http://nwjs.io/)
+
+Apache Cordova - [http://cordova.apache.org/](http://cordova.apache.org/)
+
+PhoneCap- [http://phonegap.com/](http://phonegap.com/)
 
 
 ### other libraries
